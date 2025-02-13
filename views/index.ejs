@@ -1,0 +1,97 @@
+<%- include ("particls/head.ejs") %>
+
+<div style="display: flex;">
+    <div class="sidebar">
+        <h2>🏆 Top Rankers</h2>
+        <ul>
+            <% bestCoins.forEach(i => { %>
+                <li>
+                    <img src="<%= i.iconUrl %>" alt="<%= i.name %>">
+                    <span><%= i.name %></span>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+    
+    
+    <div class="bestofbests">
+        <div class="best">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Total Coins</th>
+                        <th>Total Exchange</th>
+                        <th>Total Markets</th>
+                        <th>Total MarketCap</th>
+                        <th>Total 24h Volume</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><%=indexStats.totalCoins%></td>
+                        <td><%=indexStats.totalExchanges%></td>
+                        <td><%=indexStats.totalMarkets%></td>
+                        <td><%=indexStats.totalMarketCap%></td>
+                        <td><%=indexStats.total24hVolume%></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="bar" style="text-align: center;">
+            <h2>Digital Currencies Dominance</h2>
+            <div style="display: flex; width: 68vw; background-color: #007bff; height: 70px; border-radius: 8px;">
+                <div class="pichart" style="display: flex; justify-content: center; align-items: center; margin-left: 7px; background-color: aliceblue; height: 60px; margin-top: 5px; border-radius: 8px; font-size: 20px; font-weight: bold;"><%= Math.floor(indexStats.btcDominance) %>%</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="table-container">
+    <p>Digital Currencies!</p>
+    <div class="table-wrapper">
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th></th>
+                    <th>Coins</th>
+                    <th>MarketCap</th>
+                    <th>Price</th>
+                    <th>24hr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% locals.indexCoin.forEach(i => { %>
+                    <tr class="clickable-row" data-uuid="<%= i.uuid %>">
+                        <td><%=i.rank  %></td>
+                        <td><img src="<%= i.iconUrl %>" alt="" width="20px" height="20px"></td>
+                        <td><%=i.name  %></td>
+                        <td>$<%=i.marketCap  %></td>
+                        <td>$<%=i.price  %></td>
+                        <% if (i.change>=0){i.change="+"+`${i.change}`} %>
+                        <td class="price-change" data-change="<%= i.change %>"><%=`${i.change} %`  %></td>
+                        <td hidden>
+                            <form action="/coinDetails" method="post" class="hidden-form">
+                                <input type="hidden" name="uuid" value="<%= i.uuid %>">
+                            </form>
+                        </td>
+                    </tr>
+                <% }); %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        document.querySelectorAll(".clickable-row").forEach(row => {
+            row.addEventListener("click", function() {
+                this.querySelector(".hidden-form").submit();
+            });
+        });
+    });
+</script>
+
+<%- include("particls/foot.ejs") %>
