@@ -1,0 +1,27 @@
+<%- include("particls/head.ejs") %>
+
+
+
+<div class="container">
+    <div class="container-chart">
+        
+    </div>
+    <div class="price-card">
+        <div class="crypto-header">
+            <img src="<%= imag %>" alt="" class="crypto-icon">
+            <h1><%= name %></h1>
+        </div>
+        
+        <div class="price-display">
+            <span class="currency">$</span>
+            <span class="amount"><%= (price) %></span>
+        </div>
+        
+        <div class="action-buttons">
+            <button class="btn buy-btn">BUY</button>
+            <button class="btn sell-btn">SELL</button>
+        </div>
+    </div>
+</div>
+
+<%- include("particls/foot.ejs") %>

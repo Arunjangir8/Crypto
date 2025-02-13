@@ -29,9 +29,30 @@ app.get("/",async(req,res)=>{
     }
 })
 
-app.post("/coinDetails",(req,res)=>{
-    res.end("hello")
+app.post("/coinDetails",async(req,res)=>{
+    const responsestats=await axios.get(API_URL+"stats",config)
+    const response=await axios.get(API_URL+"coin/"+req.body.uuid,config)
+    var coin=response.data.data.coin;
+    var sparklineArray=[];
+    var sparkline=coin.sparkline.slice(0,coin.sparkline.length-1);
+    sparkline.forEach((item) => {
+        sparklineArray.push(item)
+    });
+    res.render("coinDetails.ejs",{
+        indexStats: responsestats.data.data,
+        name: coin.name,
+        imag: coin.iconUrl,
+        price:coin.price,
+    })
+    
 })
+
+// app.get("/coinDetails",async(req,res)=>{
+//     const responsestats=await axios.get(API_URL+"stats",config)
+//     res.render("coinDetails.ejs",{
+//         indexStats: responsestats.data.data
+//     })
+// })
 
 app.listen(port,()=>{
     console.log(`Runing Server in ${port}`)

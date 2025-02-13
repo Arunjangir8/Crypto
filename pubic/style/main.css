@@ -255,3 +255,105 @@ body {
 .footer-bottom{
     text-align: center;
 }
+
+
+
+/* coindetails */
+
+.container {
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+}
+
+.price-card {
+    width: 23vw;
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.1);
+    border: 1px solid rgba(66, 133, 244, 0.2);
+    height: 500;
+}
+.container-chart{
+    background-color: white;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 12px rgba(66, 133, 244, 0.1);
+    border: 1px solid rgba(66, 133, 244, 0.2);
+    height: 500px;
+    width: 63vw;
+    padding-left: 40px;
+}
+
+.crypto-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.crypto-icon {
+    background-color: #4285f4;
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.crypto-header h1 {
+    color: #333;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.price-display {
+    text-align: center;
+    margin: 15px 0;
+    color: #4285f4;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.currency {
+    font-size: 32px;
+    margin-right: 4px;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 36px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    width: 10vw;
+    transition: transform 0.2s, opacity 0.2s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+    opacity: 0.9;
+}
+
+.buy-btn {
+    background-color: #4285f4;
+    color: white;
+}
+
+.sell-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
