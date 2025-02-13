@@ -353,7 +353,70 @@ body {
 }
 
 .sell-btn {
+    
     background-color: #dc3545;
     color: white;
 }
 
+.btc-stats-wrapper {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    max-width: 100%;
+    margin: 0 auto;
+    padding-top: 40px;
+}
+.btc-stats-panel {
+    width: 44vw;
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    height: 70vh;
+}
+.btc-stats-panel-heading {
+    color: #007bff;
+    font-size: 28px;
+    margin-bottom: 20px;
+    font-weight: 500;
+    font-weight: bold;
+}
+.btc-stats-panel-text {
+    font-size: 20px;
+    color: #666;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+.btc-stats-list {
+    display: grid;
+    gap: 15px;
+}
+.btc-stats-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #eee;
+}
+.btc-stats-label {
+    color: #007bff;
+    font-size: 18px;
+}
+.btc-stats-value {
+    font-size: 18px;
+    font-weight: 500;
+    font-weight: bold;
+}
+.btc-supply-indicator {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    border: 8px solid #007bff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px auto;
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+}
