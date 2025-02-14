@@ -43,7 +43,13 @@ app.post("/coinDetails",async(req,res)=>{
         name: coin.name,
         imag: coin.iconUrl,
         price:coin.price,
+        rank:coin.rank,
+        volume24h:coin['24hVolume'],
+        marketcap: coin.marketCap,
+        btcPrice:coin.btcPrice,
+        supply:coin.supply,
     })
+    // res.send(coin)
     
 })
 

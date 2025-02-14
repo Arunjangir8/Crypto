@@ -123,6 +123,7 @@ body {
 }
 
 
+
 .table-container {
     max-width: 100%;
     margin: 0 auto;
@@ -170,6 +171,7 @@ body {
 /* Row hover effect */
 .table-wrapper tr:hover {
     background-color: #f9fafb;
+    cursor: grab;
 }
 
 /* Coin name styling */
@@ -386,6 +388,7 @@ body {
     color: #666;
     margin-bottom: 30px;
     line-height: 1.5;
+    font-weight: 700;
 }
 .btc-stats-list {
     display: grid;
@@ -408,15 +411,15 @@ body {
     font-weight: bold;
 }
 .btc-supply-indicator {
-    width: 150px;
-    height: 150px;
+    width: 140px;
+    height: 140px;
     border-radius: 50%;
-    border: 8px solid #007bff;
+    border: 15px solid #007bff;
     display: flex;
     align-items: center;
     justify-content: center;
     margin: 20px auto;
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 28px;
+    font-weight: bolder;
     color: #007bff;
 }

@@ -1,13 +1,16 @@
 <%- include ("particls/head.ejs") %>
 
-<div style="display: flex;">
+<div style="display: flex; width: 100%; flex-wrap: wrap;">
     <div class="sidebar">
         <h2>🏆 Top Rankers</h2>
         <ul>
             <% bestCoins.forEach(i => { %>
-                <li>
+                <li class="clickable">
                     <img src="<%= i.iconUrl %>" alt="<%= i.name %>">
                     <span><%= i.name %></span>
+                    <form action="/coinDetails" method="post" class="hidden-form">
+                        <input type="hidden" name="uuid" value="<%= i.uuid %>">
+                    </form>
                 </li>
             <% }); %>
         </ul>
@@ -88,6 +91,11 @@
     document.addEventListener("DOMContentLoaded", function() {
         document.querySelectorAll(".clickable-row").forEach(row => {
             row.addEventListener("click", function() {
+                this.querySelector(".hidden-form").submit();
+            });
+        });
+        document.querySelectorAll(".clickable").forEach(li => {
+            li.addEventListener("click", function() {
                 this.querySelector(".hidden-form").submit();
             });
         });
