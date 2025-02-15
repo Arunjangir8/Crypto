@@ -4,7 +4,26 @@
 
 <div class="container">
     <div class="container-chart">
-
+        <input id="sparkline" type="hidden" value=<%= sparkline %> >
+        <canvas id="priceChart" style="width:100%; height: 500px;"></canvas>
+        <form action="/changePriceChart" method="post">
+            <div id="timePeriodButtonsBlock">
+                <div class="time-period-container">
+                    <label for="timePeriod">Time Period:</label>
+                    <input type="hidden" name="uuid" id="uuid" value="<%= uuid %>">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="1h">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="3h">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="12h">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="24h">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="7d">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="30d">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="3m">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="1y">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="3y">
+                    <input type="submit" name="timePeriod" class="timePeriodButtons" value="5y">
+                </div>
+            </div>
+        </form>
     </div>
     <div class="price-card">
         <div class="crypto-header">
@@ -13,7 +32,7 @@
         </div>
         
         <div class="price-display">
-            <span class="currency">$</span>
+            <span class="currency">$ </span>
             <span class="amount"><%= (price) %></span>
         </div>
         
@@ -21,6 +40,22 @@
             <button class="btn buy-btn">BUY</button>
             <button class="btn sell-btn">SELL</button>
         </div>
+
+        <div class="high-low">
+            <table>
+                <tr><th>High</th></tr>
+                <tr><td>$<%=high%></td></tr>
+            </table>
+            <table>
+                <tr><th>low</th></tr>
+                <tr><td>$<%= low %></td></tr>
+            </table>
+            <table>
+                <tr><th>All Time High</th></tr>
+                <tr><td>$<%= allTimeHigh %></td></tr>
+            </table>
+        </div>
+
     </div>
 </div>
 

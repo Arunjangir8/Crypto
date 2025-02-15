@@ -283,7 +283,7 @@ body {
     padding: 30px;
     box-shadow: 0 4px 12px rgba(66, 133, 244, 0.1);
     border: 1px solid rgba(66, 133, 244, 0.2);
-    height: 500px;
+    height: 550px;
     width: 63vw;
     padding-left: 40px;
 }
@@ -422,4 +422,95 @@ body {
     font-size: 28px;
     font-weight: bolder;
     color: #007bff;
+}
+
+
+.time-period-container {
+    /* border: 1px solid #007bff; */
+    /* border-radius: 8px; */
+    /* padding: 5px; */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffffff;
+    margin: 10px auto;
+    max-width: 1000px;
+    color: black;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.time-period-containe label {
+    color: white;
+    margin-right: 10px;
+    font-weight: bold;
+    align-self: center;
+}
+
+.timePeriodButtons {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    width: 50px;
+    height: 30px;
+    margin: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background 0.3s;
+}
+
+.timePeriodButtons:hover {
+    background-color: #0056b3;
+}
+
+
+.high-low {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 300px;
+    margin: 20px auto;
+}
+
+/* Individual tables */
+.high-low table {
+    width: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Table headers */
+.high-low th {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 15px;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Table data cells */
+.high-low td {
+    background-color: white;
+    color: black;
+    padding: 15px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: 500;
+    border-top: 1px solid rgba(0, 123, 255, 0.1);
+}
+
+/* Hover effect */
+.high-low table:hover {
+    transform: translateX(2px);
+    transition: transform 0.2s ease;
+    box-shadow: 0 3px 6px rgba(0, 123, 255, 0.15);
 }

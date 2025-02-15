@@ -48,6 +48,19 @@ app.post("/coinDetails",async(req,res)=>{
         marketcap: coin.marketCap,
         btcPrice:coin.btcPrice,
         supply:coin.supply,
+        uuid: req.body.uuid,
+        description: coin.description,
+        change: coin.change,
+        allTimeHigh: coin.allTimeHigh.price,
+        high: Math.max(...sparklineArray),
+        low: Math.min(...sparklineArray),
+        sparkline: JSON.stringify(sparklineArray),
+        fullyDilutedMarketCap: coin.fullyDilutedMarketCap,
+        circulating: coin.supply.circulating,
+        links: coin.links,
+        color: coin.color,
+        symbol: coin.symbol,
+        period: "1h",
     })
     // res.send(coin)
     
@@ -59,6 +72,60 @@ app.post("/coinDetails",async(req,res)=>{
 //         indexStats: responsestats.data.data
 //     })
 // })
+
+app.post("/changePriceChart", async (req,res)=>{
+    try {
+        const responsestats=await axios.get(API_URL+"stats",config)
+        const response2 =await axios.get(API_URL+"coin/"+req.body.uuid,config)
+        var coin=response2.data.data.coin;
+        var sparklineArray=[];
+        var sparkline=coin.sparkline.slice(0,coin.sparkline.length-1);
+        sparkline.forEach((item) => {
+            sparklineArray.push(item)
+        });
+        var timePeriod = req.body.timePeriod;
+        var priceHistory =[]
+        const responseTimePeriod = await axios.get("https://api.coinranking.com/v2/coin/"+req.body.uuid+"/history?timePeriod="+timePeriod, config);
+        const response = await axios.get(API_URL+"coin/"+req.body.uuid,config);
+        responseTimePeriod.data.data.history.forEach((item) => {
+            priceHistory.push(item.price)
+        });
+        var sparklineArray = []
+        var sparkline  = priceHistory.slice(0,priceHistory.length-1);
+        sparkline.forEach((item)=>{
+            sparklineArray.push(Number(item));
+        })
+        var coin = response.data.data.coin;
+        res.render("coinDetails.ejs",
+            {
+                indexStats: responsestats.data.data,
+                name: coin.name,
+                imag: coin.iconUrl,
+                price:coin.price,
+                rank:coin.rank,
+                volume24h:coin['24hVolume'],
+                marketcap: coin.marketCap,
+                btcPrice:coin.btcPrice,
+                supply:coin.supply,
+                uuid: req.body.uuid,
+                description: coin.description,
+                change: coin.change,
+                allTimeHigh: coin.allTimeHigh.price,
+                high: Math.max(...sparklineArray),
+                low: Math.min(...sparklineArray),
+                sparkline: JSON.stringify(sparklineArray),
+                fullyDilutedMarketCap: coin.fullyDilutedMarketCap,
+                circulating: coin.supply.circulating,
+                links: coin.links,
+                color: coin.color,
+                symbol: coin.symbol,
+                period: "1h",
+            }
+        )
+    } catch (error) {
+        console.log(error.message);
+    }
+})
 
 app.listen(port,()=>{
     console.log(`Runing Server in ${port}`)
